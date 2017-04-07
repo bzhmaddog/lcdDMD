@@ -2,21 +2,37 @@
 
 ////////////////////////////////////////////////////////////////////////
 module HDMI_test(
-	input clk,
+	input clk25,
 	output [2:0] TMDSp, TMDSn,
-	output TMDSp_clock, TMDSn_clock
+	output clk35,clk1x,LED,TMDSp_clock, TMDSn_clock
 );
 
 wire hSync, vSync, DrawArea;
 wire [7:0] red, green, blue;
+
+dcm_35 instance_name (
+    .CLKIN_IN(clk25), 
+    .RST_IN(1'b0), 
+    .CLKFX_OUT(clk35), 
+    .CLKIN_IBUFG_OUT(), 
+    .CLK0_OUT(clk1x), 
+    .LOCKED_OUT(LED)
+);
+
+reg [31:0] cnt;
+always @(posedge clk1x) cnt <= cnt + 1;
+
+//assign LED = ~cnt[22] & ~cnt[20];
+
+
 VideoGen myVideoGen(
-	.clk(clk),
+	.clk(clk35),
 	.hSync(hSync), .vSync(vSync), .DrawArea(DrawArea),
 	.red(red), .green(green), .blue(blue)
 );
 
 HDMI myHDMI(
-	.pixclk(clk),
+	.pixclk(clk35),
 	.hSync(hSync), .vSync(vSync), .DrawArea(DrawArea),
 	.red(red), .green(green), .blue(blue),
 	.TMDSp(TMDSp), .TMDSn(TMDSn),
