@@ -1,0 +1,2 @@
+# Output products list for <dcm_bram>
+dcm_bram_flist.txt

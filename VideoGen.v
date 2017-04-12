@@ -1,31 +1,21 @@
 // (c) KNJN LLC 2013
 
-//`define PONG   // use that to get a pong game instead of a static display
-
 ////////////////////////////////////////////////////////////////////////
 module VideoGen(
 	input clk,
+	input rclk,
+	input clk180,
 	output reg DrawArea, hSync, vSync,
 	output [7:0] red, green, blue
 );
 
-////////////////////////////////////////////////////////////////////////
-//parameter hDrawArea = 640;
-//parameter hSyncPorch = 16;
-//parameter hSyncLen = 96;
-//parameter hFrameSize = 800;
-
+//h
 parameter hDrawArea = 1280;
 parameter hSyncPorch = 32;
 parameter hSyncLen = 96;
 parameter hFrameSize = 1440;
 
-
-//parameter vDrawArea = 480;
-//parameter vSyncPorch = 10;
-//parameter vSyncLen = 2;
-//parameter vFrameSize = 525;
-
+//v
 parameter vDrawArea = 390;
 parameter vSyncPorch = 1;
 parameter vSyncLen = 24;
@@ -37,6 +27,20 @@ reg [3:0] x_count = 0;
 reg [3:0] y_count = 0;
 reg [7:0] pixel_x = 0;
 reg [5:0] pixel_y = 0;
+
+wire [7:0] px_r, px_g, px_b;
+
+
+RamScreenGen myScreenGen(
+	.clk(rclk),
+	.clk180(clk180),
+   .x(pixel_x),
+   .y(pixel_y),
+   .o_r(px_r),
+   .o_g(px_g),
+   .o_b(px_b) 
+);
+
 
 always @(posedge clk) begin
  
@@ -92,7 +96,11 @@ always @(posedge clk) vSync <= (CounterY>=vDrawArea+vSyncPorch) && (CounterY<vDr
 			B <= 0;
 		end else begin
 		
-			if (pixel_y == 0 || pixel_y == 38 || pixel_x == 0 || pixel_x == 127) begin
+			R <= px_r;
+			G <= px_g;
+			B <= px_b;
+			
+			/*if (pixel_y == 0 || pixel_y == 38 || pixel_x == 0 || pixel_x == 127) begin
 				R <= 255;
 				G <= 132;
 				B <= 9;
@@ -100,7 +108,7 @@ always @(posedge clk) vSync <= (CounterY>=vDrawArea+vSyncPorch) && (CounterY<vDr
 				R <= 50;
 				G <= 50;
 				B <= 50;
-			end
+			end*/
 		end
 			
 	end
