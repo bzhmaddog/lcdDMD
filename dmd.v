@@ -3,6 +3,8 @@
 
 module dmd(
 	input clk25,
+	input RxD,
+	output TxD,
 	output [2:0] TMDSp, TMDSn,
 	output clk35,ram_clk,TMDSp_clock, TMDSn_clock
 	//input RxD,
@@ -22,6 +24,8 @@ dcm_pixels pixel_clock (
 VideoGen myVideoGen(
 	.clk(clk35),
 	.rclk(ram_clk),
+	.RxD(RxD),
+	.TxD(TxD),
 	.hSync(hSync),
 	.vSync(vSync),
 	.DrawArea(DrawArea),
