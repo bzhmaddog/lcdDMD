@@ -31,19 +31,23 @@ reg [3:0] y_count = 0;
 reg [7:0] pixel_x = 0;
 reg [5:0] pixel_y = 0;
 
+reg [0:0] buffer_we = 0;
+reg [0:0] buffer_in = 0;
 reg [12: 0] pixel_addr;
 wire [3:0] buffer_out;
 
 
 wire [7:0] RxD_data;
 wire RxD_data_ready;
-reg [0:0] TxD_data_ready = 0;
+//reg [0:0] TxD_data_ready = 0;
 
 
 
 sp_bram frame_buffer (
   .clka(clk), // input clka
+  .wea(buffer_we),
   .addra(pixel_addr), // input [12 : 0] addra
+  .dina(buffer_in),  
   .douta(buffer_out) // output [3 : 0] douta
 );
 
@@ -56,13 +60,13 @@ async_receiver RX(
 	.RxD_endofpacket()
 );
 
-/*async_transmitter TX(
+async_transmitter TX(
 	.clk(clk),
 	.TxD(TxD),
-	.TxD_start(TxD_data_ready),
-	.TxD_data(RxD_data),
+	.TxD_start(RxD_data_ready),
+	.TxD_data(RxD_data+8'd1),
 	.TxD_busy()
-);*/
+);
 
 /*always @(posedge clk) begin
 	if (RxD_data_ready) begin
