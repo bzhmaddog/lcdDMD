@@ -1,6 +1,6 @@
-# lcDMD
+# lcdDMD
 
-lcDMD is a verilog project that generate an HDMI signal in order to simulate a DMD (Dot Matrix Display).
+lcdDMD is a verilog project that generate an HDMI signal in order to simulate a DMD (Dot Matrix Display).
 
 The generated signal is compatible with Toshiba panel LTA149B780F
 
@@ -13,7 +13,7 @@ This project is mean to be used with the Pluto-IIx-hdmi board (Xilinx Spartan3 -
 [http://www.knjn.com/FPGA-RS232.html]
 
 
-#Install
+# Install
 
 - Open the .ise project with Webpack ISE (successfully compile with v14.7)
 - Run 'Synthesis'
