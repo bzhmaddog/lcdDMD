@@ -1,2 +1,0 @@
-# Output products list for <screen_clock>
-screen_clock_flist.txt

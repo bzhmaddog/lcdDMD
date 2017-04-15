@@ -1,1 +1,0 @@
--intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -o "D:/FPGA/Pluto-IIx/FPGA project - HDMI/HDMI_test_isim_beh.exe" -prj "D:/FPGA/Pluto-IIx/FPGA project - HDMI/HDMI_test_beh.prj" "work.HDMI_test" "work.glbl" 
