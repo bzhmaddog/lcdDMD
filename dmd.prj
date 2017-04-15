@@ -1,5 +1,0 @@
-verilog work "ipcore_dir/sp_bram.v"
-verilog work "VideoGen.v"
-verilog work "dcm_pixels.v"
-verilog work "HDMI.v"
-verilog work "dmd.v"

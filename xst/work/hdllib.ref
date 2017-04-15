@@ -1,8 +1,0 @@
-MO dp_bram NULL ipcore_dir/dp_bram.v vlg71/dp__bram.bin 1492242675
-MO dmd NULL dmd.v vlg49/dmd.bin 1492249414
-MO RamScreenGen NULL ScreenGen.v vlg0A/_ram_screen_gen.bin 1492246532
-MO VideoGen NULL VideoGen.v vlg21/_video_gen.bin 1492249414
-MO dcm_pixels NULL dcm_pixels.v vlg04/dcm__pixels.bin 1492249414
-MO sp_bram NULL ipcore_dir/sp_bram.v vlg78/sp__bram.bin 1492249414
-MO HDMI NULL HDMI.v vlg16/_h_d_m_i.bin 1492249414
-MO TMDS_encoder NULL HDMI.v vlg4B/_t_m_d_s__encoder.bin 1492249414
