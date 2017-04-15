@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=D:\FPGA\Pluto-IIx\lcdDMD\dmd.ncd
+OUTFILE=D:\FPGA\Pluto-IIx\lcdDMD\dmd.bit
+FAMILY=Spartan3A and Spartan3AN
+PART=xc3s200a-4vq100
+WORKINGDIR=D:\FPGA\Pluto-IIx\lcdDMD
+LICENSE=WebPack
+USER_INFO=211205637_0_0_230

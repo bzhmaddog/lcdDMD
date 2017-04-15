@@ -1,0 +1,2 @@
+# Output products list for <dcm_pixels>
+dcm_pixels_flist.txt
