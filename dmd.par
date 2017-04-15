@@ -1,0 +1,316 @@
+Release 14.7 par P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+
+W7DEVVM::  Sat Apr 15 11:43:58 2017
+
+par -w -intstyle ise -ol high -t 1 dmd_map.ncd dmd.ncd dmd.pcf 
+
+
+Constraints file: dmd.pcf.
+Loading device for application Rf_Device from file '3s200a.nph' in environment C:\Xilinx\14.7\ISE_DS\ISE\.
+   "dmd" is an NCD, version 3.2, device xc3s200a, package vq100, speed -4
+
+Initializing temperature to 85.000 Celsius. (default - Range: 0.000 to 85.000 Celsius)
+Initializing voltage to 1.140 Volts. (default - Range: 1.140 to 1.260 Volts)
+
+
+Device speed data version:  "PRODUCTION 1.42 2013-10-13".
+
+
+Design Summary Report:
+
+ Number of External IOBs                          11 out of 68     16%
+
+   Number of External Input IOBs                  1
+
+      Number of External Input IBUFs              1
+        Number of LOCed External Input IBUFs      1 out of 1     100%
+
+
+   Number of External Output IOBs                10
+
+      Number of External Output DIFFMTBs          4
+        Number of LOCed External Output DIFFMTBs    4 out of 4     100%
+
+      Number of External Output DIFFSTBs          4
+      Number of External Output IOBs              2
+
+   Number of External Bidir IOBs                  0
+
+
+   Number of BUFGMUXs                        4 out of 24     16%
+   Number of DCMs                            2 out of 4      50%
+   Number of RAMB16BWEs                      2 out of 16     12%
+   Number of Slices                        131 out of 1792    7%
+      Number of SLICEMs                      0 out of 896     0%
+
+
+
+Overall effort level (-ol):   High 
+Placer effort level (-pl):    High 
+Placer cost table entry (-t): 1
+Router effort level (-rl):    High 
+
+Starting initial Timing Analysis.  REAL time: 1 secs 
+WARNING:Par:450 - At least one timing constraint is impossible to meet because component switching limit violations have
+   been detected for a constrained component. A timing constraint summary below shows the failing constraints (preceded
+   with an Asterisk (*)). Please use the Timing Analyzer (GUI) or TRCE (command line) with the Mapped NCD and PCF files
+   to evaluate the component switching limit violations in more detail. Evaluate the datasheet for alternative
+   configurations for the component that could allow the frequencies requested in the constraint. Otherwise, the timing
+   constraint covering this component might need to be modified to satisfy the component switching limits specified in
+   the datasheet.
+
+INFO:Timing:3284 - This timing report was generated using estimated delay 
+   information.  For accurate numbers, please refer to the post Place and Route 
+   timing report.
+Number of Timing Constraints that were not applied: 1
+
+Asterisk (*) preceding a constraint indicates it was not met.
+   This may be due to a setup or hold violation.
+
+----------------------------------------------------------------------------------------------------------
+  Constraint                                |    Check    | Worst Case |  Best Case | Timing |   Timing   
+                                            |             |    Slack   | Achievable | Errors |    Score   
+----------------------------------------------------------------------------------------------------------
+* PERIOD analysis for net "myHDMI/DCM_TMDSp | SETUP       |     0.199ns|     2.301ns|       0|           0
+  " derived from  PERIOD analysis for net " | HOLD        |     0.592ns|            |       0|           0
+  pixel_clock/CLKFX_BUF" derived from NET " | MINPERIOD   |    -0.502ns|     3.002ns|       1|         502
+  pixel_clock/CLKIN_IBUFG" PERIOD = 40 ns H |             |            |            |        |            
+  IGH 50%                                   |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  PERIOD analysis for net "pixel_clock/CLKF | SETUP       |    12.003ns|    12.997ns|       0|           0
+  X_BUF" derived from  NET "pixel_clock/CLK | HOLD        |     0.564ns|            |       0|           0
+  IN_IBUFG" PERIOD = 40 ns HIGH 50%         |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  NET "pixel_clock/CLKIN_IBUFG" PERIOD = 40 | MINLOWPULSE |    30.000ns|    10.000ns|       0|           0
+   ns HIGH 50%                              |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+
+
+Derived Constraint Report
+Review Timing Report for more details on the following derived constraints.
+To create a Timing Report, run "trce -v 12 -fastpaths -o design_timing_report design.ncd design.pcf"
+or "Run Timing Analysis" from Timing Analyzer (timingan).
+Derived Constraints for pixel_clock/CLKIN_IBUFG
++-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
+|                               |   Period    |       Actual Period       |      Timing Errors        |      Paths Analyzed       |
+|           Constraint          | Requirement |-------------+-------------|-------------+-------------|-------------+-------------|
+|                               |             |   Direct    | Derivative  |   Direct    | Derivative  |   Direct    | Derivative  |
++-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
+|pixel_clock/CLKIN_IBUFG        |     40.000ns|     10.000ns|     48.032ns|            0|            1|            0|       255115|
+| pixel_clock/CLKFX_BUF         |     25.000ns|     12.997ns|     30.020ns|            0|            1|       254998|          117|
+|  myHDMI/DCM_TMDSp             |      2.500ns|      3.002ns|          N/A|            1|            0|          117|            0|
++-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
+
+1 constraint not met.
+
+
+Finished initial Timing Analysis.  REAL time: 1 secs 
+
+
+Starting Placer
+Total REAL time at the beginning of Placer: 1 secs 
+Total CPU  time at the beginning of Placer: 1 secs 
+
+Phase 1.1  Initial Placement Analysis
+Phase 1.1  Initial Placement Analysis (Checksum:a64f914e) REAL time: 1 secs 
+
+Phase 2.7  Design Feasibility Check
+Phase 2.7  Design Feasibility Check (Checksum:a64f914e) REAL time: 1 secs 
+
+Phase 3.31  Local Placement Optimization
+Phase 3.31  Local Placement Optimization (Checksum:a64f914e) REAL time: 1 secs 
+
+Phase 4.2  Initial Clock and IO Placement
+
+Phase 4.2  Initial Clock and IO Placement (Checksum:faf203d) REAL time: 2 secs 
+
+Phase 5.30  Global Clock Region Assignment
+Phase 5.30  Global Clock Region Assignment (Checksum:faf203d) REAL time: 2 secs 
+
+Phase 6.36  Local Placement Optimization
+Phase 6.36  Local Placement Optimization (Checksum:faf203d) REAL time: 2 secs 
+
+Phase 7.3  Local Placement Optimization
+
+Phase 7.3  Local Placement Optimization (Checksum:6e0d9712) REAL time: 2 secs 
+
+Phase 8.5  Local Placement Optimization
+Phase 8.5  Local Placement Optimization (Checksum:6e0d9712) REAL time: 2 secs 
+
+Phase 9.8  Global Placement
+.....................................................................
+...................
+.................................................
+........
+.................
+...............
+Phase 9.8  Global Placement (Checksum:d66286aa) REAL time: 3 secs 
+
+Phase 10.5  Local Placement Optimization
+Phase 10.5  Local Placement Optimization (Checksum:d66286aa) REAL time: 3 secs 
+
+Phase 11.18  Placement Optimization
+Phase 11.18  Placement Optimization (Checksum:5f399614) REAL time: 3 secs 
+
+Phase 12.5  Local Placement Optimization
+Phase 12.5  Local Placement Optimization (Checksum:5f399614) REAL time: 3 secs 
+
+Total REAL time to Placer completion: 3 secs 
+Total CPU  time to Placer completion: 3 secs 
+Writing design to file dmd.ncd
+
+
+
+Starting Router
+
+
+Phase  1  : 1001 unrouted;      REAL time: 5 secs 
+
+Phase  2  : 880 unrouted;      REAL time: 5 secs 
+
+Phase  3  : 131 unrouted;      REAL time: 5 secs 
+
+Phase  4  : 165 unrouted; (Setup:4458, Hold:31689, Component Switching Limit:502)     REAL time: 5 secs 
+
+Phase  5  : 0 unrouted; (Setup:4483, Hold:29498, Component Switching Limit:502)     REAL time: 5 secs 
+
+Updating file: dmd.ncd with current fully routed design.
+
+Phase  6  : 0 unrouted; (Setup:4483, Hold:29498, Component Switching Limit:502)     REAL time: 5 secs 
+
+Phase  7  : 0 unrouted; (Setup:3824, Hold:29794, Component Switching Limit:502)     REAL time: 6 secs 
+
+Updating file: dmd.ncd with current fully routed design.
+
+Phase  8  : 0 unrouted; (Setup:3656, Hold:29503, Component Switching Limit:502)     REAL time: 6 secs 
+
+Updating file: dmd.ncd with current fully routed design.
+
+Updating file: dmd.ncd with current fully routed design.
+
+Phase  9  : 0 unrouted; (Setup:3656, Hold:29503, Component Switching Limit:502)     REAL time: 7 secs 
+
+Phase 10  : 0 unrouted; (Setup:5511, Hold:28084, Component Switching Limit:502)     REAL time: 7 secs 
+
+Phase 11  : 0 unrouted; (Setup:5511, Hold:0, Component Switching Limit:502)     REAL time: 7 secs 
+
+Phase 12  : 0 unrouted; (Setup:4395, Hold:0, Component Switching Limit:502)     REAL time: 7 secs 
+WARNING:Route:455 - CLK Net:clk35_OBUF may have excessive skew because 
+      0 CLK pins and 1 NON_CLK pins failed to route using a CLK template.
+
+Total REAL time to Router completion: 7 secs 
+Total CPU time to Router completion: 7 secs 
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+Generating "PAR" statistics.
+
+**************************
+Generating Clock Report
+**************************
+
++---------------------+--------------+------+------+------------+-------------+
+|        Clock Net    |   Resource   |Locked|Fanout|Net Skew(ns)|Max Delay(ns)|
++---------------------+--------------+------+------+------------+-------------+
+|     myHDMI/clk_TMDS | BUFGMUX_X1Y10| No   |   18 |  0.084     |  1.070      |
++---------------------+--------------+------+------+------------+-------------+
+|          clk35_OBUF |  BUFGMUX_X1Y0| No   |   64 |  0.111     |  1.074      |
++---------------------+--------------+------+------+------------+-------------+
+
+* Net Skew is the difference between the minimum and maximum routing
+only delays for the net. Note this is different from Clock Skew which
+is reported in TRCE timing report. Clock Skew is the difference between
+the minimum and maximum path delays which includes logic delays.
+
+* The fanout is the number of component pins not the individual BEL loads,
+for example SLICE loads not FF loads.
+
+Timing Score: 4897 (Setup: 4395, Hold: 0, Component Switching Limit: 502)
+
+WARNING:Par:468 - Your design did not meet timing.  The following are some suggestions to assist you to meet timing in
+   your design.
+
+   Review the timing report using Timing Analyzer (In ISE select "Post-Place &
+   Route Static Timing Report"). Go to the failing constraint(s) and evaluate the failing paths for each constraint.
+
+   Try the Design Goal and Strategies for Timing Performance(In ISE select Project -> Design Goals & Strategies) to
+   ensure the best options are set in the tools for timing closure.
+
+   Use the Xilinx "SmartXplorer" script to try special combinations of
+   options known to produce very good results.
+
+   Visit the Xilinx technical support web at http://support.xilinx.com and go to
+   either "Troubleshoot->Tech Tips->Timing & Constraints" or "
+   TechXclusives->Timing Closure" for tips and suggestions for meeting timing
+   in your design.
+
+Number of Timing Constraints that were not applied: 1
+
+Asterisk (*) preceding a constraint indicates it was not met.
+   This may be due to a setup or hold violation.
+
+----------------------------------------------------------------------------------------------------------
+  Constraint                                |    Check    | Worst Case |  Best Case | Timing |   Timing   
+                                            |             |    Slack   | Achievable | Errors |    Score   
+----------------------------------------------------------------------------------------------------------
+* PERIOD analysis for net "myHDMI/DCM_TMDSp | SETUP       |    -0.967ns|     3.467ns|       8|        4395
+  " derived from  PERIOD analysis for net " | HOLD        |     0.484ns|            |       0|           0
+  pixel_clock/CLKFX_BUF" derived from NET " | MINPERIOD   |    -0.502ns|     3.002ns|       1|         502
+  pixel_clock/CLKIN_IBUFG" PERIOD = 40 ns H |             |            |            |        |            
+  IGH 50%                                   |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  PERIOD analysis for net "pixel_clock/CLKF | SETUP       |     3.269ns|    21.731ns|       0|           0
+  X_BUF" derived from  NET "pixel_clock/CLK | HOLD        |     0.993ns|            |       0|           0
+  IN_IBUFG" PERIOD = 40 ns HIGH 50%         |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  NET "pixel_clock/CLKIN_IBUFG" PERIOD = 40 | MINLOWPULSE |    30.000ns|    10.000ns|       0|           0
+   ns HIGH 50%                              |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+
+
+Derived Constraint Report
+Review Timing Report for more details on the following derived constraints.
+To create a Timing Report, run "trce -v 12 -fastpaths -o design_timing_report design.ncd design.pcf"
+or "Run Timing Analysis" from Timing Analyzer (timingan).
+Derived Constraints for pixel_clock/CLKIN_IBUFG
++-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
+|                               |   Period    |       Actual Period       |      Timing Errors        |      Paths Analyzed       |
+|           Constraint          | Requirement |-------------+-------------|-------------+-------------|-------------+-------------|
+|                               |             |   Direct    | Derivative  |   Direct    | Derivative  |   Direct    | Derivative  |
++-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
+|pixel_clock/CLKIN_IBUFG        |     40.000ns|     10.000ns|     55.472ns|            0|            9|            0|       255115|
+| pixel_clock/CLKFX_BUF         |     25.000ns|     21.731ns|     34.670ns|            0|            9|       254998|          117|
+|  myHDMI/DCM_TMDSp             |      2.500ns|      3.467ns|          N/A|            9|            0|          117|            0|
++-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
+
+1 constraint not met.
+
+
+Generating Pad Report.
+
+All signals are completely routed.
+
+Total REAL time to PAR completion: 8 secs 
+Total CPU time to PAR completion: 7 secs 
+
+Peak Memory Usage:  290 MB
+
+Placement: Completed - No errors found.
+Routing: Completed - No errors found.
+Timing: Completed - 10 errors found.
+
+Number of error messages: 0
+Number of warning messages: 3
+Number of info messages: 0
+
+Writing design to file dmd.ncd
+
+
+
+PAR done!

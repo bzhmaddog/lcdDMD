@@ -1,0 +1,15 @@
+//! **************************************************************************
+// Written by: Map P.20131013 on Sat Apr 15 11:43:55 2017
+//! **************************************************************************
+
+SCHEMATIC START;
+COMP "TMDSp_clock" LOCATE = SITE "P34" LEVEL 1;
+COMP "TMDSp<0>" LOCATE = SITE "P36" LEVEL 1;
+COMP "TMDSp<1>" LOCATE = SITE "P43" LEVEL 1;
+COMP "TMDSp<2>" LOCATE = SITE "P48" LEVEL 1;
+COMP "clk25" LOCATE = SITE "P40" LEVEL 1;
+PIN clk25_pin<0> = BEL "clk25" PINNAME PAD;
+PIN "clk25_pin<0>" CLOCK_DEDICATED_ROUTE = FALSE;
+NET "pixel_clock/CLKIN_IBUFG" PERIOD = 40 ns HIGH 50%;
+SCHEMATIC END;
+

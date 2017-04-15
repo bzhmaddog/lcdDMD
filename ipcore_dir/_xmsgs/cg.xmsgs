@@ -8,10 +8,22 @@
 <msg type="info" file="sim" num="172" delta="old" >Generating IP...
 </msg>
 
-<msg type="error" file="sim" num="0" delta="new" ><arg fmt="%s" index="1">Unable to find .\test.coe</arg>
+<msg type="warning" file="sim" num="0" delta="new" ><arg fmt="%s" index="1">A core named &apos;sp_bram&apos; already exists in the project. Output products for this core may be overwritten.</arg>
 </msg>
 
-<msg type="error" file="sim" num="0" delta="new" ><arg fmt="%s" index="1">   Coregen is looking for D:\FPGA\Pluto-IIx\lcdDMD\ipcore_dir\test.coe</arg>
+<msg type="warning" file="sim" num="0" delta="new" ><arg fmt="%s" index="1">A core named &apos;sp_bram&apos; already exists in the project. Output products for this core may be overwritten.</arg>
+</msg>
+
+<msg type="info" file="sim" num="0" delta="new" ><arg fmt="%s" index="1">Pre-processing HDL files for &apos;sp_bram&apos;...</arg>
+</msg>
+
+<msg type="warning" file="sim" num="0" delta="new" ><arg fmt="%s" index="1">Overwriting existing file D:/FPGA/Pluto-IIx/lcdDMD/ipcore_dir/tmp/_cg/sp_bram/doc/blk_mem_gen_v7_3_vinfo.html with file from view xilinx_documentation</arg>
+</msg>
+
+<msg type="info" file="sim" num="949" delta="new" >Finished generation of ASY schematic symbol.
+</msg>
+
+<msg type="info" file="sim" num="948" delta="new" >Finished FLIST file generation.
 </msg>
 
 </messages>

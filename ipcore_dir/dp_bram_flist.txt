@@ -1,4 +1,5 @@
 # Output products list for <dp_bram>
+_xmsgs\pn_parser.xmsgs
 dp_bram.asy
 dp_bram.gise
 dp_bram.mif

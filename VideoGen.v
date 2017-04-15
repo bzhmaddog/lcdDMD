@@ -4,7 +4,6 @@
 module VideoGen(
 	input clk,
 	input rclk,
-	input clk180,
 	output reg DrawArea, hSync, vSync,
 	output [7:0] red, green, blue
 );
@@ -22,27 +21,38 @@ parameter vSyncLen = 24;
 parameter vFrameSize = 442;
 
 reg [11:0] CounterX, CounterY;
-reg [7:0] R, G, B;
+reg [7:0] R = 0;
+reg [7:0] G = 0;
+reg [7:0] B = 0;
 reg [3:0] x_count = 0;
 reg [3:0] y_count = 0;
 reg [7:0] pixel_x = 0;
 reg [5:0] pixel_y = 0;
 
-wire [7:0] px_r, px_g, px_b;
+//wire [7:0] px_r, px_g, px_b;
 
+reg [12: 0] pixel_addr;
+wire [3:0] buffer_out;
+//reg [3:0] pixel_brightness;
 
-RamScreenGen myScreenGen(
+/*RamScreenGen myScreenGen(
 	.clk(rclk),
-	.clk180(clk180),
    .x(pixel_x),
    .y(pixel_y),
    .o_r(px_r),
    .o_g(px_g),
    .o_b(px_b) 
+);*/
+
+sp_bram screen_buffer (
+  .clka(clk), // input clka
+  .addra(pixel_addr), // input [12 : 0] addra
+  .douta(buffer_out) // output [3 : 0] douta
 );
 
-
 always @(posedge clk) begin
+
+	//pixel_brightness <= buffer_out;
  
  if (CounterX==hFrameSize-1) begin
 	CounterX <= 12'd0;
@@ -85,6 +95,11 @@ always @(posedge clk) DrawArea <= (CounterX<hDrawArea) && (CounterY<vDrawArea);
 always @(posedge clk) hSync <= (CounterX>=hDrawArea+hSyncPorch) && (CounterX<hDrawArea+hSyncPorch+hSyncLen);
 always @(posedge clk) vSync <= (CounterY>=vDrawArea+vSyncPorch) && (CounterY<vDrawArea+vSyncPorch+vSyncLen);
 
+
+always @* begin
+	pixel_addr = (pixel_x) + (pixel_y * 128);
+end
+
 ////////////////////////////////////////////////////////////////////////
 	
 	always @(posedge clk) begin
@@ -96,9 +111,13 @@ always @(posedge clk) vSync <= (CounterY>=vDrawArea+vSyncPorch) && (CounterY<vDr
 			B <= 0;
 		end else begin
 		
-			R <= px_r;
-			G <= px_g;
-			B <= px_b;
+			//R <= px_r;
+			//G <= px_g;
+			//B <= px_b;
+
+			R <= 50 + (buffer_out[3:0] * 13);
+			G <= 50 + (buffer_out[3:0] * 13);
+			B <= 50 + (buffer_out[3:0] * 13);
 			
 			/*if (pixel_y == 0 || pixel_y == 38 || pixel_x == 0 || pixel_x == 127) begin
 				R <= 255;
