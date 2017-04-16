@@ -176,7 +176,7 @@ module BaudTickGen(
 );
 parameter ClkFrequency = 25000000;
 parameter Baud = 115200;
-parameter Oversampling = 1;
+parameter Oversampling = 8;
 
 function integer log2(input integer v); begin log2=0; while(v>>log2) log2=log2+1; end endfunction
 localparam AccWidth = log2(ClkFrequency/Baud)+8;  // +/- 2% max timing error over a byte
